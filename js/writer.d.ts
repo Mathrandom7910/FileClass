@@ -1,4 +1,4 @@
-import { FileC } from "./filec";
+import { FileClass } from "./filec";
 /**
  * Object to apped data to files
  */
@@ -41,7 +41,7 @@ export declare class BulkFileWriter {
  */
 export declare class FWriter {
     private file;
-    constructor(file: FileC);
+    constructor(file: FileClass);
     /**
      * Creates and returns a new FileAppender object
      * @returns The newly created FileAppender object

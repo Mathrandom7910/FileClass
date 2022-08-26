@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FileC = void 0;
+exports.FileClass = void 0;
 const node_fs_1 = require("node:fs");
 const reader_1 = require("./reader");
 const node_path_1 = require("node:path");
@@ -8,7 +8,7 @@ const writer_1 = require("./writer");
 /**
  * Interface to interact with the file system easily
  */
-class FileC {
+class FileClass {
     path;
     /**
      * Constructs the file object
@@ -93,7 +93,7 @@ class FileC {
         for (let i = 0; i < dirs.length; i++) {
             const dir = dirs[i];
             concatDir += dir + (dirs.length - 1 == i ? "" : node_path_1.sep);
-            await new FileC(concatDir).mkDir();
+            await new FileClass(concatDir).mkDir();
         }
     }
     /**
@@ -148,4 +148,4 @@ class FileC {
         return false;
     }
 }
-exports.FileC = FileC;
+exports.FileClass = FileClass;

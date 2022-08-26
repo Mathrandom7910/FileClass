@@ -1,9 +1,9 @@
 /// <reference types="node" />
-import { FileC } from "./filec";
+import { FileClass } from "./filec";
 import EventEmitter from "@mathrandom7910/tseventemitter";
 export interface LRMap {
     line: string;
-    close: FileC;
+    close: FileClass;
 }
 /**
  * LineReader object to read a file line by line
@@ -16,7 +16,7 @@ export declare class LineReader extends EventEmitter<LRMap> {
      * Constructs a new LineReader object
      * @param file File to read from
      */
-    constructor(file: FileC);
+    constructor(file: FileClass);
     /**
      * Closes the readline interface and prevents any line events from emitting
      */
@@ -31,7 +31,7 @@ export declare class FReader<T = any> {
      * Constructs a new FReader object
      * @param file File to read from
      */
-    constructor(file: FileC);
+    constructor(file: FileClass);
     /**
      * Reads the entire file with the specified encoding options
      * @param bufferEncoding Buffer encoding options to read the file with

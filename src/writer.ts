@@ -1,4 +1,4 @@
-import { FileC } from "./filec";
+import { FileClass } from "./filec";
 import { appendFile, writeFile } from "node:fs";
 
 /**
@@ -73,7 +73,7 @@ export class BulkFileWriter {
  */
 
 export class FWriter {
-    constructor(private file: FileC) {
+    constructor(private file: FileClass) {
 
     }
 

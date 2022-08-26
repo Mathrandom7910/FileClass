@@ -7,7 +7,7 @@ import { FWriter } from './writer';
  * Interface to interact with the file system easily
  */
 
-export class FileC {
+export class FileClass {
 
     /**
      * Constructs the file object
@@ -111,7 +111,7 @@ export class FileC {
             const dir = dirs[i];
             concatDir += dir + (dirs.length - 1 == i ? "" : sep);
 
-            await new FileC(concatDir).mkDir();
+            await new FileClass(concatDir).mkDir();
         }
     }
 

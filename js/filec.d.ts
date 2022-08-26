@@ -5,7 +5,7 @@ import { FWriter } from './writer';
 /**
  * Interface to interact with the file system easily
  */
-export declare class FileC {
+export declare class FileClass {
     #private;
     readonly path: string;
     /**

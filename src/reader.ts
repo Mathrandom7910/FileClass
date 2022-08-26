@@ -1,11 +1,11 @@
 import { createInterface, Interface } from "node:readline";
-import { FileC } from "./filec";
+import { FileClass } from "./filec";
 import EventEmitter from "@mathrandom7910/tseventemitter";
 import { readFile } from "node:fs";
 
 export interface LRMap {
     line: string;
-    close: FileC;
+    close: FileClass;
 }
 
 /**
@@ -21,7 +21,7 @@ export class LineReader extends EventEmitter<LRMap> {
      * @param file File to read from
      */
 
-    constructor(private file: FileC) {
+    constructor(private file: FileClass) {
         super();
 
         this.rl = createInterface(this.file.readStream());
@@ -56,7 +56,7 @@ export class FReader<T = any> {
      * @param file File to read from
      */
 
-    constructor(private file: FileC) {
+    constructor(private file: FileClass) {
     }
 
     /**
