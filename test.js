@@ -1,4 +1,4 @@
-const File = require("./js/index").FileC;
+const File = require("./js/index").FileClass;
 
 const file = new File("./test1.txt");
 
