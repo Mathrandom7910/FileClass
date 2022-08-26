@@ -1,0 +1,16 @@
+{
+  "name": "fileclass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./js/index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mathrandom7910/tseventemitter": "^1.0.5"
+  }
+}
