@@ -25,7 +25,7 @@ export declare class LineReader extends EventEmitter<LRMap> {
 /**
  * FReader object to read the entire contents of a file
  */
-export declare class FReader<T = any> {
+export declare class FReader {
     private file;
     /**
      * Constructs a new FReader object
@@ -52,5 +52,5 @@ export declare class FReader<T = any> {
      * Reads the current file and parses the output with JSON
      * @returns The parsed output, specified by the generic, or any
      */
-    JSON(bufEncoding?: BufferEncoding): Promise<T>;
+    JSON<K = any>(bufEncoding?: BufferEncoding): Promise<K>;
 }

@@ -2,13 +2,15 @@ const File = require("./js/index").FileClass;
 
 const file = new File("./test1.txt");
 
+
 const writer = file.writer();
 
-const appender = writer.appender();
-
-const reader = file.reader().readLine();
-
-writer.appender().append("hello world1")
+(async function() {
+    for(let i = 0; i < 100; i++) {
+        await writer.appender().append("\n");
+        await writer.appender().append("Hello " + i);
+    }
+})();
 
 
 // reader.read("utf-8")

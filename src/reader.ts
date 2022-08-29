@@ -49,7 +49,7 @@ export class LineReader extends EventEmitter<LRMap> {
  * FReader object to read the entire contents of a file
  */
 
-export class FReader<T = any> {
+export class FReader {
 
     /**
      * Constructs a new FReader object
@@ -112,7 +112,7 @@ export class FReader<T = any> {
      * @returns The parsed output, specified by the generic, or any
      */
 
-    async JSON(bufEncoding: BufferEncoding = "utf-8") {
-        return JSON.parse(await this.read(bufEncoding)) as T;
+    async JSON<K = any>(bufEncoding: BufferEncoding = "utf-8") {
+        return JSON.parse(await this.read(bufEncoding)) as K;
     }
 }

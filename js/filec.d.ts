@@ -28,7 +28,7 @@ export declare class FileClass {
      * Creates a new FReader object
      * @returns The newly created FReader object
      */
-    reader(): FReader<any>;
+    reader(): FReader;
     /**
      * Creates a new FWriter object
      * @returns The newly created FWriter object
