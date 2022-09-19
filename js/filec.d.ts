@@ -1,5 +1,6 @@
 /// <reference types="node" />
 /// <reference types="node" />
+import { Stats } from 'node:fs';
 import { FReader } from './reader';
 import { FWriter } from './writer';
 /**
@@ -24,6 +25,27 @@ export declare class FileClass {
      * @returns True if the file exists, otherwise false
      */
     exists(): Promise<boolean>;
+    /**
+     * Asynchronously gets the stats on the path
+     * @returns Stats on the path
+     */
+    stats(): Promise<Stats>;
+    /**
+     * Asynchronously checks if the current Object is a directory or a file, requires the file/directory to exist
+     * @returns True if the object is a directory, otherwise false.
+     */
+    isDir(): Promise<boolean>;
+    /**
+     * Walks over a directory to find all files, and sub-directories
+     * @param encoding Encoding method to walk by
+     * @returns An array (string) of sub-directories and files
+     */
+    walk(encoding: BufferEncoding): Promise<string[]>;
+    /**
+     * Walks over a directory to find all files, and sub-directories defaulting to a BufferEncoding of `utf-8`
+     * @returns An array (string) of sub-directories and files
+     */
+    walk(): Promise<string[]>;
     /**
      * Creates a new FReader object
      * @returns The newly created FReader object

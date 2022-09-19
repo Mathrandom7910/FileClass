@@ -1,4 +1,4 @@
-import { access, constants, createReadStream, mkdir, unlink, open, close, read } from 'node:fs';
+import { access, constants, createReadStream, mkdir, unlink, open, close, lstat, Stats, readdir } from 'node:fs';
 import { FReader } from './reader';
 import { resolve, sep } from "node:path";
 import { FWriter } from './writer';
@@ -46,6 +46,67 @@ export class FileClass {
     }
 
     /**
+     * Asynchronously gets the stats on the path
+     * @returns Stats on the path
+     */
+
+    stats() {
+        return new Promise<Stats>((res, rej) => {
+            lstat(this.path, (er, stats) => {
+                if(er) rej(er);
+
+                res(stats);
+            });
+        });
+    }
+
+    /**
+     * Asynchronously checks if the current Object is a directory or a file, requires the file/directory to exist
+     * @returns True if the object is a directory, otherwise false.
+     */
+
+    async isDir() {
+        return (await this.stats()).isDirectory();
+    }
+
+    /**
+     * Walks over a directory to find all files, and sub-directories
+     * @param encoding Encoding method to walk by
+     * @returns An array (string) of sub-directories and files
+     */
+
+    async walk(encoding: BufferEncoding): Promise<string[]>;
+
+    /**
+     * Walks over a directory to find all files, and sub-directories defaulting to a BufferEncoding of `utf-8` 
+     * @returns An array (string) of sub-directories and files
+     */
+
+    async walk(): Promise<string[]>;
+
+    /**
+     * Walks over a directory to find all files, and sub-directories
+     * @param encoding Optional encoding method
+     * @returns An array (string) of sub-directories and files
+     */
+
+    async walk(encoding: BufferEncoding = "utf-8") {
+        return new Promise<string[]>(async (res, rej) => {
+            if(!await this.isDir()) {
+                rej(`${this.path} is NOT a directory!`)
+            }
+    
+            if(encoding) {
+                readdir(this.path, encoding, (er, files) => {
+                    if(er) rej(er);
+
+                    res(files);
+                });
+            }
+        })
+    }
+
+    /**
      * Creates a new FReader object
      * @returns The newly created FReader object
      */
@@ -90,10 +151,6 @@ export class FileClass {
         if(await this.exists()) {
             return;
         }
-
-        // mkdir(this.path, () => {
-
-        // });
         await this.#mkDir(this.path).catch(console.log);
 
         return;

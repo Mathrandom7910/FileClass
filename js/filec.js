@@ -42,6 +42,45 @@ class FileClass {
         return this.access(node_fs_1.constants.F_OK);
     }
     /**
+     * Asynchronously gets the stats on the path
+     * @returns Stats on the path
+     */
+    stats() {
+        return new Promise((res, rej) => {
+            (0, node_fs_1.lstat)(this.path, (er, stats) => {
+                if (er)
+                    rej(er);
+                res(stats);
+            });
+        });
+    }
+    /**
+     * Asynchronously checks if the current Object is a directory or a file, requires the file/directory to exist
+     * @returns True if the object is a directory, otherwise false.
+     */
+    async isDir() {
+        return (await this.stats()).isDirectory();
+    }
+    /**
+     * Walks over a directory to find all files, and sub-directories
+     * @param encoding Optional encoding method
+     * @returns An array (string) of sub-directories and files
+     */
+    async walk(encoding = "utf-8") {
+        return new Promise(async (res, rej) => {
+            if (!await this.isDir()) {
+                rej(`${this.path} is NOT a directory!`);
+            }
+            if (encoding) {
+                (0, node_fs_1.readdir)(this.path, encoding, (er, files) => {
+                    if (er)
+                        rej(er);
+                    res(files);
+                });
+            }
+        });
+    }
+    /**
      * Creates a new FReader object
      * @returns The newly created FReader object
      */
@@ -79,8 +118,6 @@ class FileClass {
         if (await this.exists()) {
             return;
         }
-        // mkdir(this.path, () => {
-        // });
         await this.#mkDir(this.path).catch(console.log);
         return;
     }

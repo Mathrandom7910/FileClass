@@ -1,16 +1,20 @@
 const File = require("./js/index").FileClass;
 
-const file = new File("./test1.txt");
+// const file = new File("./test1.txt");
 
 
-const writer = file.writer();
+// const writer = file.writer();
 
-(async function() {
-    for(let i = 0; i < 100; i++) {
-        await writer.appender().append("\n");
-        await writer.appender().append("Hello " + i);
-    }
-})();
+// (async function() {
+//     for(let i = 0; i < 100; i++) {
+//         await writer.appender().append("\n");
+//         await writer.appender().append("Hello " + i);
+//     }
+// })();
+
+const testDir = new File("./src");
+
+testDir.walk().then(console.log)
 
 
 // reader.read("utf-8")
