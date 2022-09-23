@@ -1,6 +1,6 @@
 import { FileClass } from "./filec";
 import { FReader, LineReader, LRMap } from "./reader";
-import { FWriter } from "./writer";
+import { BulkFileWriter, FileAppender, FWriter } from "./writer";
 
 
-export { FileClass, FWriter, FReader, LineReader, LRMap }
+export { FileClass, FWriter, FReader, LineReader, LRMap, BulkFileWriter, FileAppender }
