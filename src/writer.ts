@@ -58,7 +58,7 @@ export class BulkFileWriter {
      * @param data Data to replace the current file with
      */
 
-    write(data: string) {
+    write(data: string | Buffer) {
         return new Promise<void>((res, rej) => {
             writeFile(this.path, data, (e) => {
                 if(e) rej(e);

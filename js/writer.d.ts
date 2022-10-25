@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { FileClass } from "./filec";
 /**
  * Object to apped data to files
@@ -34,7 +35,7 @@ export declare class BulkFileWriter {
      * Asynchronously replaces the file with the data provided
      * @param data Data to replace the current file with
      */
-    write(data: string): Promise<void>;
+    write(data: string | Buffer): Promise<void>;
 }
 /**
  * Object to access different methods of writing to files
