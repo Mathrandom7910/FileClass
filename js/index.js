@@ -10,3 +10,4 @@ const writer_1 = require("./writer");
 Object.defineProperty(exports, "BulkFileWriter", { enumerable: true, get: function () { return writer_1.BulkFileWriter; } });
 Object.defineProperty(exports, "FileAppender", { enumerable: true, get: function () { return writer_1.FileAppender; } });
 Object.defineProperty(exports, "FWriter", { enumerable: true, get: function () { return writer_1.FWriter; } });
+exports.default = filec_1.FileClass;

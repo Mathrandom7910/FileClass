@@ -20,6 +20,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@mathrandom7910/tseventemitter": "^1.1.0"
+    "@mathrandom7910/tseventemitter": "^1.1.1"
   }
 }
